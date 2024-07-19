@@ -15,7 +15,7 @@ uintptr_t playerBaseAddr = 0x00C7BCD4;
 std::vector<unsigned int> CombatFlagOffsets = { 0x88, 0x28, 0x8, 0xBA };
 WNDCLASSEX wcex;
 MSG msg;
-const wchar_t* procName = L"WoW.exe";
+const wchar_t* procName = L"REDACTED";
 wchar_t xText[100];
 wchar_t yText[100];
 wchar_t zText[100];
