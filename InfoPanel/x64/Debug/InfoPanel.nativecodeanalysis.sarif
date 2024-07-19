@@ -1,0 +1,107 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.40.33811.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///c:/users/grass/source/repos/infopanel/infopanel/infopanel.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "29f576724dfebe6546c15db33016b07b19a93b78b89eeb6483b42a7f3f3e1b6e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/grass/source/repos/infopanel/infopanel/infopanel.h"
+          },
+          "hashes": {
+            "sha-256": "5e70dcef9711b5d1ba772e6d32f54c168643b67e595a2d39338e9de7970b86bd"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/grass/source/repos/infopanel/infopanel/resource.h"
+          },
+          "hashes": {
+            "sha-256": "ba7fd0c6efb9a043ae0b3df62fe9e611922cf5c6d53cd65e4cf2eb9d004339b1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/grass/source/repos/infopanel/infopanel/read.h"
+          },
+          "hashes": {
+            "sha-256": "0d41a9937f094d99d940c9777b040e80ec6d43b5d588aad904173079657415bb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/grass/source/repos/infopanel/infopanel/framework.h"
+          },
+          "hashes": {
+            "sha-256": "c365635452786972eaf643a4239b340d4d9ffbc95608f49e6cfc7d86041a6754"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/grass/source/repos/infopanel/infopanel/targetver.h"
+          },
+          "hashes": {
+            "sha-256": "98488711a351764d005e8c3d3fd40aaed28396870a660c28abd81ac2a53d4b90"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/grass/source/repos/infopanel/infopanel/textloop.h"
+          },
+          "hashes": {
+            "sha-256": "aa35ae844a72f6400785796c2b05217240d19281337d2e759ab02f9e6b6e5b27"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/grass/source/repos/infopanel/infopanel/clipboard.h"
+          },
+          "hashes": {
+            "sha-256": "0004f2cfd59167fdade3c63fecb907eb547e0c68970cd19addb5e0a2ed2b0aae"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/grass/source/repos/infopanel/infopanel/camera.h"
+          },
+          "hashes": {
+            "sha-256": "62117107ee5ecddd7d164e9bec681e5f9be93dfe586ed1f348f64660fc3ae55e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/grass/source/repos/infopanel/infopanel/isfacingwaypoint.h"
+          },
+          "hashes": {
+            "sha-256": "0b7a169e09cfd33310da81b21ad1a941d61fcfc7850650b1bacedcce1a6b0bf7"
+          }
+        }
+      ]
+    }
+  ]
+}

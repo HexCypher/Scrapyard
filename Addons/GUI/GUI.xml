@@ -1,0 +1,72 @@
+<!-- .004 GUI.xml -->
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/FrameXML/UI.xsd">
+
+    <Frame name="GUIFrame" parent="UIParent" hidden="false" movable="true" resizable="true">
+        <Size>
+            <AbsDimension x="325" y="500"/>
+        </Size>
+        <Anchors>
+            <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                <Offset>
+                    <AbsDimension x="0" y="-175"/>
+                </Offset>
+            </Anchor>
+        </Anchors>
+        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+            <BackgroundInsets>
+                <AbsInset left="11" right="12" top="12" bottom="11"/>
+            </BackgroundInsets>
+        </Backdrop>
+        <TitleRegion>
+            <Size>
+                <AbsDimension x="400" y="100"/>
+            </Size>
+            <Anchors>
+                <Anchor point="TOP"/>
+            </Anchors>
+        </TitleRegion>
+        <Scripts>
+            <OnLoad>
+                GUIFrame:RegisterEvent("PLAYER_LOGIN");
+                GUIFrame:SetScript("OnEvent", function()
+                    if (event == "PLAYER_LOGIN") then
+                        GUIFrame:Show();
+                    end
+                end);
+            </OnLoad>
+            <OnDragStart>
+                GUIFrame:StartMoving();
+            </OnDragStart>
+            <OnDragStop>
+                GUIFrame:StopMovingOrSizing();
+            </OnDragStop>
+        </Scripts>
+        <Frames>
+            <Button name="GUIButton" inherits="UIPanelButtonTemplate">
+                <Size>
+                    <AbsDimension x="100" y="25"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="10"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <NormalText>
+                    <FontString inherits="GameFontNormal" setAllPoints="true"/>
+                </NormalText>
+                <Scripts>
+                    <OnLoad>
+                        GUIButton:SetText("Okay")
+                    </OnLoad>
+                    <OnClick>
+                        GUIFrame:Hide();
+                    </OnClick>
+                </Scripts>
+            </Button>
+        </Frames>
+    </Frame>
+</Ui>

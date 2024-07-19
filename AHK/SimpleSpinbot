@@ -1,0 +1,110 @@
+; FileName: AutomatedScript_v5.ahk
+; Version: .007
+
+#Persistent
+#NoEnv
+SetTitleMatchMode, 2 ; Allows partial matching of window titles
+DetectHiddenWindows, On ; Allows detection of hidden windows
+
+toggle := false
+target_window := "REDACTED" ; Change this to match your window title
+
+; Get the window handle
+WinGet, hwnd, ID, %target_window%
+
+; Define the coordinates for the click
+x := 667
+y := 22
+
+; Convert client coordinates to screen coordinates
+VarSetCapacity(pt, 8)
+NumPut(x, pt, 0, "Int")
+NumPut(y, pt, 4, "Int")
+DllCall("ClientToScreen", "UInt", hwnd, "UInt", &pt)
+x_screen := NumGet(pt, 0, "Int")
+y_screen := NumGet(pt, 4, "Int")
+
+F1:: ; F1 key to toggle on/off
+    toggle := !toggle
+    if (toggle)
+        ToolTip, Script is running
+    else
+        ToolTip, Script stopped
+    while (toggle)
+    {
+        ControlClick, x0 y0, %target_window%, Left
+        Sleep, 500
+        ControlSend,, 3, %target_window%
+        ToolTip, Target
+        Sleep, 500
+        ControlSend,, 1, %target_window%
+        ToolTip, Shoot
+        Sleep, 2000        
+        ControlSend,, 1, %target_window%
+        ToolTip, Shoot 2
+        Sleep, 6000
+        ControlSend,, 2, %target_window%
+        ToolTip, Melee
+        Sleep, 13000    
+
+        ; Save the current mouse position
+        MouseGetPos, origX, origY
+
+        ; Move the mouse to the target position
+        DllCall("SetCursorPos", "Int", x_screen, "Int", y_screen)
+            
+        ; Send Shift key down
+        DllCall("keybd_event", "UChar", 0x10, "UChar", 0, "UInt", 0, "UInt", 0)  ; 0x10 is the virtual key code for Shift
+
+        ; Send the right mouse button down and up
+        DllCall("mouse_event", "UInt", 0x08, "Int", 0, "Int", 0, "UInt", 0, "UInt", 0)  ; MOUSEEVENTF_RIGHTDOWN
+        DllCall("mouse_event", "UInt", 0x10, "Int", 0, "Int", 0, "UInt", 0, "UInt", 0)  ; MOUSEEVENTF_RIGHTUP
+
+        ; Send Shift key up
+        DllCall("keybd_event", "UChar", 0x10, "UChar", 0, "UInt", 0x02, "UInt", 0)  ; KEYEVENTF_KEYUP
+
+        ; Restore the original mouse position
+        DllCall("SetCursorPos", "Int", origX, "Int", origY)
+        ToolTip, Loot
+        Sleep, 2000
+
+        Random, randAction, 1, 8
+        Random, randTimer, 250, 1000
+        Random, randSleep, 500, 1250
+        Random, randTravel, 2000, 5000
+        ToolTip, Action %randAction%
+        Sleep, 500
+
+        if (randAction = 1 || randAction = 2)
+        {
+            ControlSend,, {a down}, %target_window%
+            ToolTip, Right Turn %randTimer%
+            Sleep, randTimer
+            ControlSend,, {a up}, %target_window%
+        }
+        else if (randAction = 3 || randAction = 4)
+        {
+            ControlSend,, {d down}, %target_window%
+            ToolTip, Left Turn %randTimer%
+            Sleep, randTimer
+            ControlSend,, {d up}, %target_window%
+        }
+        else if (randAction = 5 || randAction = 6 || randAction = 7)
+        {
+            ToolTip, No Turn %randTimer%
+            Sleep, randTimer
+        }
+        else if (randAction = 8)
+        {
+            ToolTip, Travel %randTravel%
+            ControlSend,, {w down}, %target_window%
+            Sleep, randTravel
+            ControlSend,, {w up}, %target_window%
+            Sleep, 50
+        }
+        ControlSend,, {s down}, %target_window%
+        ToolTip, Walk Backwards %randSleep%
+        Sleep, randSleep 
+        ControlSend,, {s up}, %target_window%
+    }
+    return

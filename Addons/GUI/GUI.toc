@@ -1,0 +1,7 @@
+## Interface: 11200
+## Title: GUI
+## Notes: A simple addon to display a UI window
+## Author: nullbody
+
+GUI.xml
+GUI.lua
